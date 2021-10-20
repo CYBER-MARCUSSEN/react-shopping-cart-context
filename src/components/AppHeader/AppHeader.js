@@ -30,6 +30,46 @@ function AppHeader({ ...props }) {
                 </NavLink>
               </li>
             </ul>
+
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  activeClassName="active"
+                  className="nav-link"
+                  to="/checkout/step-1"
+                >
+                  step-1
+                </NavLink>
+              </li>
+            </ul>
+
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  activeClassName="active"
+                  className="nav-link"
+                  to="/checkout/step-2"
+                >
+                  step-2
+                </NavLink>
+              </li>
+            </ul>
+
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <NavLink
+                  exact
+                  activeClassName="active"
+                  className="nav-link"
+                  to="/checkout/step-3"
+                >
+                  step-3
+                </NavLink>
+              </li>
+            </ul>
+
           </nav>
         </div>
       </div>

@@ -34,10 +34,10 @@ function ItemCard({
   isFavorite,
   upVotes,
   downVotes,
-  handleDownVote,
-  handleUpVote,
-  handleSetFavorite,
-  handleAddToCart,
+  // handleDownVote,
+  // handleUpVote,
+  // handleSetFavorite,
+  // handleAddToCart,
 }) {
   function onDownVote() {
     handleDownVote(id);
@@ -58,8 +58,8 @@ function ItemCard({
         <div className="ItemCard__image-wrapper">
           <img src={img} className="ItemCard__image" alt={title} />
           <FavoriteIconButton
-            handleSetFavorite={onSetFavorite}
-            isFavorite={isFavorite}
+            // handleSetFavorite={onSetFavorite}
+             isFavorite={isFavorite}
           />
         </div>
         <h2 className="ItemCard__title">{title}</h2>
@@ -70,38 +70,44 @@ function ItemCard({
       <footer className="ItemCard__meta">
         <div className="ItemCard__icons">
           <div className="ItemCard__icon-row">
-            <IconButton aria-label="up vote product" handleClick={onUpVote}>
+            <IconButton aria-label="up vote product"
+            //  handleClick={onUpVote}
+             >
               <ThumbUp />
             </IconButton>
             <p
-              className={getPopularityClasses(
-                upVotes.currentValue,
-                upVotes.upperLimit,
-                "ItemCard__icon-txt",
-                "ItemCard__icon-popular",
-              )}
+              // className={getPopularityClasses(
+              //   upVotes.currentValue,
+              //   upVotes.upperLimit,
+              //   "ItemCard__icon-txt",
+              //   "ItemCard__icon-popular",
+              // )}
             >
-              {upVotes.currentValue}
+              {/* {upVotes.currentValue} */}
             </p>
           </div>
           <div className="ItemCard__icon-row">
-            <IconButton aria-label="down vote product" handleClick={onDownVote}>
+            <IconButton aria-label="down vote product"
+            //  handleClick={onDownVote}
+             >
               <ThumbDown />
             </IconButton>
             <p
-              className={getPopularityClasses(
-                downVotes.currentValue,
-                downVotes.lowerLimit,
-                "ItemCard__icon-txt",
-                "ItemCard__icon-unpopular",
-              )}
+              // className={getPopularityClasses(
+              //   downVotes.currentValue,
+              //   downVotes.lowerLimit,
+              //   "ItemCard__icon-txt",
+              //   "ItemCard__icon-unpopular",
+              // )}
             >
-              {downVotes.currentValue}
+              {/* {downVotes.currentValue} */}
             </p>
           </div>
         </div>
         <div className="ItemCard__icon-row">
-          <Button onClick={onAddToCart}>Add to cart</Button>
+          <Button 
+          // onClick={onAddToCart}
+          >Add to cart</Button>
         </div>
       </footer>
     </article>

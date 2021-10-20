@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import ShoppingCartItem from "../ShoppingCartItem";
 import Button from "../Button";
+import { productContext } from "../../contextandreducer/productProvider";
 
 function getCartTotal(cart) {
   return cart.reduce((accum, item) => {
@@ -9,7 +10,9 @@ function getCartTotal(cart) {
   }, 0);
 }
 
-function Cart({ cartItems, handleRemove, handleChange, ...props }) {
+function Cart() {
+  const [store,dispatch]= useContext(productContext)
+  const { cartItems, handleRemove, handleChange, ...props }=store
   return (
     <aside {...props}>
       <div className="row flex-column">
@@ -18,7 +21,7 @@ function Cart({ cartItems, handleRemove, handleChange, ...props }) {
           <hr className="mb-3" />
         </div>
 
-        {cartItems.length > 0 ? (
+        {cartItems&&cartItems.length > 0 ? (
           cartItems.map((item) => (
             <ShoppingCartItem
               key={item.id}
@@ -28,8 +31,6 @@ function Cart({ cartItems, handleRemove, handleChange, ...props }) {
               img={item.img}
               quantity={item.quantity}
               unitsInStock={item.unitsInStock}
-              handleRemove={handleRemove}
-              handleChange={handleChange}
             />
           ))
         ) : (
@@ -49,7 +50,7 @@ function Cart({ cartItems, handleRemove, handleChange, ...props }) {
               <hr />
             </div>
             <div className="col">
-              <Button disabled={cartItems.length === 0 && true}>Checkout</Button>
+              <Button>Checkout</Button>
             </div>
           </div>
         </div>

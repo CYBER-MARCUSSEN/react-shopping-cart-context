@@ -1,16 +1,20 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { productContext } from "../../contextandreducer/productProvider";
 import ItemCard from "../ItemCard";
 
-function ProductsListing({
-  products,
-  handleDownVote,
-  handleUpVote,
-  handleSetFavorite,
-  handleAddToCart,
-  ...props
-}) {
+function ProductsListing() {
+  const [store, dispatch] = useContext(productContext)
+   const {
+     products,
+    handleDownVote,
+    handleUpVote,
+    handleSetFavorite,
+    handleAddToCart,
+    ...props
+  } = store
+
   return (
+
     <section className="row" {...props}>
       {products.map((product) => (
         <ItemCard
@@ -19,13 +23,6 @@ function ProductsListing({
           img={product.img}
           title={product.title}
           shortDescription={product.shortDescription}
-          upVotes={product.votes.upVotes}
-          handleUpVote={handleUpVote}
-          downVotes={product.votes.downVotes}
-          handleDownVote={handleDownVote}
-          isFavorite={product.isFavorite}
-          handleSetFavorite={handleSetFavorite}
-          handleAddToCart={handleAddToCart}
         />
       ))}
     </section>

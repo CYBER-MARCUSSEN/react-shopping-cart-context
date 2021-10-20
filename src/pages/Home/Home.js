@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import ProductsListing from "../../components/ProductsListing";
 import Cart from "../../components/Cart";
 import withLayout from "../../hoc/withLayout";
+import {productContext} from "../../contextandreducer/productProvider"
 
-function Home({
-  products,
-  cartItems,
-  isLoading,
-  hasError,
-  loadingError,
-  handleDownVote,
-  handleUpVote,
-  handleSetFavorite,
-  handleAddToCart,
-  handleRemove,
-  handleChange,
-}) {
+
+
+function Home() {
+  const [store,dispatch]= useContext(productContext)
+  console.log(store);
+  const { loadingError, isLoading, hasError }=store
+  console.log(dispatch)
   return (
     <div className="row">
       <div className="col col-8">
@@ -46,26 +41,16 @@ function Home({
           )}
           {!isLoading && !hasError && (
             <div className="col col-12">
-              <ProductsListing
-                products={products}
-                handleDownVote={handleDownVote}
-                handleUpVote={handleUpVote}
-                handleSetFavorite={handleSetFavorite}
-                handleAddToCart={handleAddToCart}
-              />
+              <ProductsListing/>
             </div>
           )}
         </div>
       </div>
 
-      <Cart
-        className="col col-4"
-        cartItems={cartItems}
-        handleRemove={handleRemove}
-        handleChange={handleChange}
-      />
+      <Cart/>
     </div>
   );
 }
 
 export default withLayout(Home);
+
